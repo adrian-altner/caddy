@@ -2,9 +2,9 @@
   email admin@adrian-altner.com
 }
 
-# Serves the static Astro build from the shared Docker volume mounted at /srv
+# Serves the static Astro build for adrian-altner.com
 adrian-altner.com {
-  root * /srv
+  root * /srv/www-adrian-altner-com
   encode gzip
   file_server
   log {
@@ -16,3 +16,18 @@ adrian-altner.com {
 www.adrian-altner.com {
   redir https://adrian-altner.com{uri}
 }
+
+# Serves the static site for krungthep.life
+# krungthep.life {
+#   root * /srv/www-krungthep-life
+#   encode gzip
+#   file_server
+#   log {
+#     output file /var/log/caddy/access.log
+#   }
+# }
+
+# Redirect www to apex
+# www.krungthep.life {
+#   redir https://krungthep.life{uri}
+# }

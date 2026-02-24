@@ -7,15 +7,11 @@ services:
       - "443:443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - /srv/data/www-adrian-altner-com:/srv
+      - /srv/data/www-adrian-altner-com:/srv/www-adrian-altner-com
+      # - /srv/data/www-krungthep-life:/srv/www-krungthep-life
       - ./caddy-data:/data       # ACME-Zertifikate, OCSP-Cache etc. liegen hier
       - ./caddy-config:/config   # Admin-API-Snapshot/Config
       - ./logs:/var/log/caddy    # Zugriff-/Error-Logs auf dem Host
     # Uncomment and set if you need a specific timezone
     #environment:
     #  - TZ=Europe/Berlin
-
-volumes:
-  caddy_site:
-    external: true
-    name: caddy_site
