@@ -7,7 +7,7 @@ services:
       - "443:443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_site:/srv
+      - /srv/data/www-adrian-altner-com:/srv
       - ./caddy-data:/data       # ACME-Zertifikate, OCSP-Cache etc. liegen hier
       - ./caddy-config:/config   # Admin-API-Snapshot/Config
       - ./logs:/var/log/caddy    # Zugriff-/Error-Logs auf dem Host
