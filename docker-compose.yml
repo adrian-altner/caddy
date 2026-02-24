@@ -8,13 +8,12 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_site:/srv
-      - caddy_data:/data
-      - caddy_config:/config
+      - ./caddy-data:/data       # ACME-Zertifikate, OCSP-Cache etc. liegen hier
+      - ./caddy-config:/config   # Admin-API-Snapshot/Config
+      - ./logs:/var/log/caddy    # Zugriff-/Error-Logs auf dem Host
     # Uncomment and set if you need a specific timezone
     #environment:
     #  - TZ=Europe/Berlin
 
 volumes:
-  caddy_data:
-  caddy_config:
   caddy_site:
