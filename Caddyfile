@@ -1,10 +1,11 @@
 {
-  email you@example.com
+  email admin@adrian-altner.com
 }
 
-# Simple file server on port 80/443 with auto HTTPS
-www.adrian-altner.com {
+# Serves the static Astro build from the shared Docker volume mounted at /srv
+adrian-altner.com {
   root * /srv
+  encode gzip
   file_server
   log {
     output file /var/log/caddy/access.log
@@ -12,7 +13,7 @@ www.adrian-altner.com {
   }
 }
 
-# Optional redirect from apex
-adrian-altner.com {
-  redir https://www.adrian-altner.com{uri}
+# Redirect www to apex
+www.adrian-altner.com {
+  redir https://adrian-altner.com{uri}
 }
