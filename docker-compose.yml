@@ -17,3 +17,5 @@ services:
 
 volumes:
   caddy_site:
+    external: true
+    name: caddy_site
