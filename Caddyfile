@@ -1,0 +1,18 @@
+{
+  email you@example.com
+}
+
+# Simple file server on port 80/443 with auto HTTPS
+www.adrian-altner.com {
+  root * /srv
+  file_server
+  log {
+    output file /var/log/caddy/access.log
+    format single_field common_log
+  }
+}
+
+# Optional redirect from apex
+adrian-altner.com {
+  redir https://www.adrian-altner.com{uri}
+}

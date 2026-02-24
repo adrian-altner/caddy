@@ -1,0 +1,20 @@
+services:
+  caddy:
+    image: caddy:2.8.4-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+    # Uncomment and set if you need a specific timezone
+    #environment:
+    #  - TZ=Europe/Berlin
+
+volumes:
+  caddy_data:
+  caddy_config:
+  caddy_site:
